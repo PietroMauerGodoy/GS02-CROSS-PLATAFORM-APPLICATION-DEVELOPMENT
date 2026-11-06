@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
 
+import '../../features/alertas/alerta_detalhe_page.dart';
+import '../../features/alertas/alertas_page.dart';
+import '../../features/home/home_page.dart';
 import '../../features/home/home_shell.dart';
 import '../widgets/placeholder_screen.dart';
-import '../../features/home/home_page.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/home',
@@ -16,28 +18,27 @@ final appRouter = GoRouter(
       builder: (_, __, shell) => HomeShell(shell: shell),
       branches: [
         StatefulShellBranch(routes: [
-        GoRoute(
-  path: '/home',
-  builder: (_, __) => const HomePage(),
-),
+          GoRoute(
+            path: '/home',
+            builder: (_, __) => const HomePage(),
+          ),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/alertas',
-            builder: (_, __) => const PlaceholderScreen(
-                title: 'Alertas', subtitle: 'Lista com filtros'),
+            builder: (_, __) => const AlertasPage(),
             routes: [
               GoRoute(
                 path: ':id',
-                builder: (_, s) => PlaceholderScreen(
-                    title: 'Alerta ${s.pathParameters['id']}',
-                    subtitle: 'Justificativa, confiança e limitações'),
+                builder: (_, s) =>
+                    AlertaDetalhePage(id: s.pathParameters['id']!),
                 routes: [
                   GoRoute(
                     path: 'decisao',
                     builder: (_, s) => PlaceholderScreen(
                         title: 'Decisão do gestor',
-                        subtitle: 'Formulário para o alerta ${s.pathParameters['id']}'),
+                        subtitle:
+                            'Formulário para o alerta ${s.pathParameters['id']}'),
                   ),
                 ],
               ),
@@ -47,8 +48,8 @@ final appRouter = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/decisoes',
-            builder: (_, __) => const PlaceholderScreen(
-                title: 'Histórico de decisões'),
+            builder: (_, __) =>
+                const PlaceholderScreen(title: 'Histórico de decisões'),
           ),
         ]),
         StatefulShellBranch(routes: [
@@ -73,8 +74,8 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/sobre',
-      builder: (_, __) => const PlaceholderScreen(
-          title: 'Fontes e limitações'),
+      builder: (_, __) =>
+          const PlaceholderScreen(title: 'Fontes e limitações'),
     ),
   ],
 );
