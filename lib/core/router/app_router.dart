@@ -2,9 +2,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/home/home_shell.dart';
 import '../widgets/placeholder_screen.dart';
+import '../../features/home/home_page.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/onboarding',
+  initialLocation: '/home',
   routes: [
     GoRoute(
       path: '/onboarding',
@@ -15,11 +16,10 @@ final appRouter = GoRouter(
       builder: (_, __, shell) => HomeShell(shell: shell),
       branches: [
         StatefulShellBranch(routes: [
-          GoRoute(
-            path: '/home',
-            builder: (_, __) => const PlaceholderScreen(
-                title: 'Visão Geral', subtitle: 'KPIs e alertas ativos'),
-          ),
+        GoRoute(
+  path: '/home',
+  builder: (_, __) => const HomePage(),
+),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
