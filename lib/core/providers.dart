@@ -10,6 +10,7 @@ import '../domain/alerts/motor_alertas.dart';
 import '../domain/models/alerta.dart';
 import '../domain/models/decisao.dart';
 import '../domain/models/enums.dart';
+import '../domain/resumo_territorio.dart';
 
 /// Sobrescrito no main.dart com a instância real.
 final sharedPrefsProvider =
@@ -70,4 +71,12 @@ final alertasProvider = Provider<AsyncValue<List<Alerta>>>((ref) {
             : a,
     ];
   });
+});
+
+/// Resumo (KPIs) do território selecionado.
+final resumoProvider = Provider<AsyncValue<ResumoTerritorio>>((ref) {
+  final id = ref.watch(territorioSelecionadoProvider);
+  return ref
+      .watch(dadosProvider)
+      .whenData((d) => ResumoTerritorio.de(d.indicadores, id, DateTime.now()));
 });
