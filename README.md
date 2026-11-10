@@ -96,8 +96,19 @@ test/          testes do motor de alertas
 
 ## Como rodar
 
+**Pré-requisitos**
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) 3.27 ou superior (testado com Flutter 3.47.0 e Dart 3.13.0)
+- Para Android: Android Studio com um emulador criado, ou um celular com depuração USB
+- Para Web: Google Chrome ou Microsoft Edge
+- Internet, para o clima. Sem internet, o app usa o último clima salvo.
+
+**Plataformas:** Android e Web (o projeto não inclui a pasta `ios`).
+
+**Passo a passo**
+
 ```bash
+git clone https://github.com/PietroMauerGodoy/GS02-CROSS-PLATAFORM-APPLICATION-DEVELOPMENT.git
+cd GS02-CROSS-PLATAFORM-APPLICATION-DEVELOPMENT
 flutter pub get
-flutter run            # escolha o dispositivo (Android, Edge, etc.)
-flutter test           # testes do motor de alertas
+flutter run -d chrome     # ou: flutter run -d edge | flutter run (escolhe o dispositivo)
 ```
