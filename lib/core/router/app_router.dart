@@ -2,6 +2,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/alertas/alerta_detalhe_page.dart';
 import '../../features/alertas/alertas_page.dart';
+import '../../features/decisoes/decisao_form_page.dart';
+import '../../features/decisoes/decisoes_page.dart';
 import '../../features/home/home_page.dart';
 import '../../features/home/home_shell.dart';
 import '../widgets/placeholder_screen.dart';
@@ -35,10 +37,8 @@ final appRouter = GoRouter(
                 routes: [
                   GoRoute(
                     path: 'decisao',
-                    builder: (_, s) => PlaceholderScreen(
-                        title: 'Decisão do gestor',
-                        subtitle:
-                            'Formulário para o alerta ${s.pathParameters['id']}'),
+                    builder: (_, s) =>
+                        DecisaoFormPage(alertaId: s.pathParameters['id']!),
                   ),
                 ],
               ),
@@ -48,8 +48,7 @@ final appRouter = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/decisoes',
-            builder: (_, __) =>
-                const PlaceholderScreen(title: 'Histórico de decisões'),
+            builder: (_, __) => const DecisoesPage(),
           ),
         ]),
         StatefulShellBranch(routes: [
