@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 import '../../domain/models/enums.dart';
 import '../../features/alertas/alerta_detalhe_page.dart';
 import '../../features/alertas/alertas_page.dart';
+import '../../features/configuracoes/configuracoes_page.dart';
 import '../../features/dashboard/dashboard_page.dart';
 import '../../features/decisoes/decisao_form_page.dart';
 import '../../features/decisoes/decisoes_page.dart';
 import '../../features/home/home_page.dart';
 import '../../features/home/home_shell.dart';
+import '../../features/sobre/sobre_page.dart';
 import '../widgets/placeholder_screen.dart';
 
 final appRouter = GoRouter(
@@ -56,9 +58,7 @@ final appRouter = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/configuracoes',
-            builder: (_, __) => const PlaceholderScreen(
-                title: 'Configurações',
-                subtitle: 'Acessibilidade e privacidade'),
+            builder: (_, __) => const ConfiguracoesPage(),
           ),
         ]),
       ],
@@ -79,8 +79,7 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/sobre',
-      builder: (_, __) =>
-          const PlaceholderScreen(title: 'Fontes e limitações'),
+      builder: (_, __) => const SobrePage(),
     ),
   ],
 );
