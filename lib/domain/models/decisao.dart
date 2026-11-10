@@ -3,6 +3,7 @@ import 'enums.dart';
 class Decisao {
   final String id;
   final String alertaId;
+  final String alertaTitulo;
   final AcaoDecisao acao;
   final String justificativa;
   final String responsavel;
@@ -12,6 +13,7 @@ class Decisao {
   const Decisao({
     required this.id,
     required this.alertaId,
+    this.alertaTitulo = '',
     required this.acao,
     required this.justificativa,
     required this.responsavel,
@@ -22,6 +24,7 @@ class Decisao {
   Map<String, dynamic> toMap() => {
         'id': id,
         'alertaId': alertaId,
+        'alertaTitulo': alertaTitulo,
         'acao': acao.name,
         'justificativa': justificativa,
         'responsavel': responsavel,
@@ -32,6 +35,7 @@ class Decisao {
   factory Decisao.fromMap(Map<String, dynamic> m) => Decisao(
         id: m['id'] as String,
         alertaId: m['alertaId'] as String,
+        alertaTitulo: (m['alertaTitulo'] as String?) ?? '',
         acao: AcaoDecisao.values.byName(m['acao'] as String),
         justificativa: m['justificativa'] as String,
         responsavel: m['responsavel'] as String,

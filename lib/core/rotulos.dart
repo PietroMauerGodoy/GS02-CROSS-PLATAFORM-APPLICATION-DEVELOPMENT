@@ -11,3 +11,12 @@ String rotuloSeveridade(Severidade s) => switch (s) {
       Severidade.media => 'Média',
       Severidade.alta => 'Alta',
     };
+
+String rotuloAcao(AcaoDecisao a) => switch (a) {
+      AcaoDecisao.aceitar => 'Aceitar e encaminhar',
+      AcaoDecisao.descartar => 'Descartar',
+      AcaoDecisao.pedirDados => 'Pedir mais dados',
+    };
+
+String formatarData(DateTime d) =>
+    '${d.day.toString().padLeft(2, '0')}/${d.month.toString().padLeft(2, '0')}/${d.year}';
