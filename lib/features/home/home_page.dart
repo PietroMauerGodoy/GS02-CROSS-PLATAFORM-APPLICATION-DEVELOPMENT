@@ -119,6 +119,30 @@ class HomePage extends ConsumerWidget {
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 24),
+            Text('Dashboards', style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                FilledButton.tonalIcon(
+                  onPressed: () => context.push('/dashboard/clima'),
+                  icon: const Icon(Icons.cloud),
+                  label: const Text('Clima'),
+                ),
+                FilledButton.tonalIcon(
+                  onPressed: () => context.push('/dashboard/agua'),
+                  icon: const Icon(Icons.water_drop),
+                  label: const Text('Água'),
+                ),
+                FilledButton.tonalIcon(
+                  onPressed: () => context.push('/dashboard/residuos'),
+                  icon: const Icon(Icons.recycling),
+                  label: const Text('Resíduos'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
             Text('Alertas ativos',
                 style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 8),
