@@ -13,6 +13,9 @@ class LocalStore {
   static const _kDecisoes = 'decisoes';
   static const _kClima = 'clima_cache';
   static const _kTerritorio = 'territorio_id';
+  static const _kTema = 'cfg_tema';
+  static const _kFonte = 'cfg_fonte';
+  static const _kContraste = 'cfg_contraste';
 
   // Decisões do gestor
   List<Decisao> lerDecisoes() =>
@@ -32,6 +35,23 @@ class LocalStore {
   String? lerTerritorio() => _p.getString(_kTerritorio);
 
   Future<void> salvarTerritorio(String id) => _p.setString(_kTerritorio, id);
+
+  // Configurações de acessibilidade e aparência
+  String? lerTema() => _p.getString(_kTema);
+  Future<void> salvarTema(String v) => _p.setString(_kTema, v);
+
+  double? lerEscalaFonte() => _p.getDouble(_kFonte);
+  Future<void> salvarEscalaFonte(double v) => _p.setDouble(_kFonte, v);
+
+  bool? lerAltoContraste() => _p.getBool(_kContraste);
+  Future<void> salvarAltoContraste(bool v) => _p.setBool(_kContraste, v);
+
+  /// Apaga decisões, cache de clima e território. Mantém as configurações.
+  Future<void> limparDados() async {
+    await _p.remove(_kDecisoes);
+    await _p.remove(_kClima);
+    await _p.remove(_kTerritorio);
+  }
 
   List<Map<String, dynamic>> _lerLista(String chave) {
     final raw = _p.getString(chave);
