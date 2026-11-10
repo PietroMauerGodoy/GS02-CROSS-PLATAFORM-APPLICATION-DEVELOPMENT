@@ -7,8 +7,8 @@ import '../../domain/models/indicador.dart';
 
 enum TipoGrafico { linha, barras }
 
-/// Gráfico reutilizável de uma série temporal (linha ou barras).
-/// A série deve estar ordenada por data e não pode ser vazia.
+/// GrÃ¡fico reutilizÃ¡vel de uma sÃ©rie temporal (linha ou barras).
+/// A sÃ©rie deve estar ordenada por data e nÃ£o pode ser vazia.
 class SerieChart extends StatelessWidget {
   final List<Indicador> serie;
   final TipoGrafico tipo;
@@ -98,7 +98,7 @@ class SerieChart extends StatelessWidget {
     );
 
     final linhaRef = referencia == null
-        ? ExtraLinesData()
+        ? const ExtraLinesData()
         : ExtraLinesData(horizontalLines: [
             HorizontalLine(
               y: referencia!,
@@ -183,7 +183,7 @@ class SerieChart extends StatelessWidget {
                   toY: serie[i].valor,
                   width: n <= 17 ? 12 : 6,
                   borderRadius: BorderRadius.circular(3),
-                  // dias futuros (previsão) ficam mais claros
+                  // dias futuros (previsÃ£o) ficam mais claros
                   color: serie[i].timestamp.isAfter(inicioHoje)
                       ? cor.withValues(alpha: 0.45)
                       : cor,

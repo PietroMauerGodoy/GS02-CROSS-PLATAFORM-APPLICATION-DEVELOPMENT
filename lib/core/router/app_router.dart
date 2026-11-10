@@ -10,16 +10,10 @@ import '../../features/decisoes/decisoes_page.dart';
 import '../../features/home/home_page.dart';
 import '../../features/home/home_shell.dart';
 import '../../features/sobre/sobre_page.dart';
-import '../widgets/placeholder_screen.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/home',
   routes: [
-    GoRoute(
-      path: '/onboarding',
-      builder: (_, __) => const PlaceholderScreen(
-          title: 'Onboarding', subtitle: 'Escolha do território e perfil'),
-    ),
     StatefulShellRoute.indexedStack(
       builder: (_, __, shell) => HomeShell(shell: shell),
       branches: [
@@ -72,10 +66,6 @@ final appRouter = GoRouter(
             Tema.clima;
         return DashboardPage(tema: tema);
       },
-    ),
-    GoRoute(
-      path: '/territorios',
-      builder: (_, __) => const PlaceholderScreen(title: 'Territórios'),
     ),
     GoRoute(
       path: '/sobre',
