@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 
+import '../../domain/models/enums.dart';
 import '../../features/alertas/alerta_detalhe_page.dart';
 import '../../features/alertas/alertas_page.dart';
+import '../../features/dashboard/dashboard_page.dart';
 import '../../features/decisoes/decisao_form_page.dart';
 import '../../features/decisoes/decisoes_page.dart';
 import '../../features/home/home_page.dart';
@@ -63,9 +65,13 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/dashboard/:tema',
-      builder: (_, s) => PlaceholderScreen(
-          title: 'Dashboard: ${s.pathParameters['tema']}',
-          subtitle: 'clima | agua | residuos'),
+      builder: (_, s) {
+        final tema = Tema.values
+                .where((t) => t.name == s.pathParameters['tema'])
+                .firstOrNull ??
+            Tema.clima;
+        return DashboardPage(tema: tema);
+      },
     ),
     GoRoute(
       path: '/territorios',
